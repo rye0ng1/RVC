@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+enum Cleaner_Command { Off=0, On, Up };
+
 void cleaner_interface(int dust_existence) {
 
 }
