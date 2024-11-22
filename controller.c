@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-int controller() {
-
-    return 0;
+void controller() {
+    printf("hello rvc");
 }
