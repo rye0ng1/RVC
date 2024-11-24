@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include "header.h"
 
 typedef struct motor_interface
 {
@@ -9,46 +10,42 @@ typedef struct motor_interface
     bool backward;
 }Motor_Inf;
 
-int move_forward(bool enable_or_disable) {
+char* move_forward(bool enable_or_disable) {
     if(enable_or_disable) {
-        printf("move forward\n");
-        return 1;
+        return "enable move forward\n";
     }
-    return 0;
+    return "disable move forward\n";
 }
 
-int turn_left(int trigger, int tick) {
+char* turn_left(int trigger, int tick) {
     int time = tick;
     if(trigger) {
-        printf("turn left\n");
         for(int i=0; i<time; i++) {
             tick--;
         }
         trigger = false;
-        return 1;
+        return "trigger turn left\n";
     }
-    return 0;
+    return "failed turn left\n";
 }
 
-int turn_right(int trigger, int tick) {
+char* turn_right(int trigger, int tick) {
     int time = tick;
     if(trigger) {
-        printf("turn right\n");
         for(int i=0; i<time; i++) {
             tick--;
         }
         trigger = false;
-        return 1;
+        return "trigger turn right\n";
     }
-    return 0;
+    return "failed turn right\n";
 }
 
-int move_backward(bool enable_or_disable) {
+char* move_backward(bool enable_or_disable) {
     if(enable_or_disable) {
-        printf("move backward\n");
-        return 1;
+        return "enable move backward\n";
     }
-    return 0;
+    return "disable move backward\n";
 }
 
 void motor_interface(bool obastacle_location[3]) {
@@ -63,20 +60,20 @@ void motor_interface(bool obastacle_location[3]) {
     motor.right = obastacle_location[2];
 
     if(!motor.forward) {
-        move_forward(enable);
+        printf("%s", move_forward(enable));
     }
     else if(motor.forward && !motor.left) { //F&&!L이 막힌 상황 -> turn left
-        move_forward(disable);
-        turn_left(trigger, tick);
-        move_forward(enable);
+        printf("%s", move_forward(disable));
+        printf("%s", turn_left(trigger, tick));
+        printf("%s", move_forward(enable));
     }
     else if(motor.forward && motor.left && !motor.right) { //F&&L&&!R이 막힌 상황 -> turn right
-        move_forward(disable);
-        turn_right(trigger, tick);
-        move_forward(enable);
+        printf("%s", move_forward(disable));
+        printf("%s", turn_right(trigger, tick));
+        printf("%s", move_forward(enable));
     }
     else if(motor.forward && motor.left && motor.right) { //F&&L&&R이 막힌 상황 -> move backward
-        move_forward(disable);
-        move_backward(enable);
+        printf("%s", move_forward(disable));
+        printf("%s", move_backward(enable));
     }
 }
