@@ -6,21 +6,76 @@
 void run_predefined_tests() {
     printf("\nRunning predefined test cases...\n");
 
-    int test_cases[30][4] = {
+    int test_cases[16][4] = {
         {0, 0, 0, 0}, {0, 0, 0, 1}, {0, 0, 1, 0}, {0, 0, 1, 1},
         {0, 1, 0, 0}, {0, 1, 0, 1}, {0, 1, 1, 0}, {0, 1, 1, 1},
         {1, 0, 0, 0}, {1, 0, 0, 1}, {1, 0, 1, 0}, {1, 0, 1, 1},
         {1, 1, 0, 0}, {1, 1, 0, 1}, {1, 1, 1, 0}, {1, 1, 1, 1},
-        {0, 0, 0, 1}, {1, 0, 1, 1}, {0, 1, 0, 1}, {1, 0, 1, 0},
-        {1, 0, 0, 1}, {1, 1, 0, 0}, {0, 0, 1, 0}, {1, 1, 1, 1},
-        {1, 0, 0, 0}, {0, 1, 1, 0}, {0, 0, 1, 1}, {0, 1, 0, 0},
-        {0, 1, 0, 1}, {1, 0, 0, 0}
     };
 
-    for (int i = 0; i < 30; i++) {
-        printf("\nTEST CASE %d:\n", i + 1);
+    // Loop through each test case
+    for (int i = 0; i < 16; i++) {
+        printf("\nTEST CASE %02d:\n", i + 1);
         controller(test_cases[i][0], test_cases[i][1], test_cases[i][2], test_cases[i][3]);
     }
+
+    //test_case_17
+    printf("TEST CASE 17\n");
+    controller(0,0,0,1);
+    controller(1,0,1,1);
+    //test_case_18
+    printf("TEST CASE 18\n");
+    controller(0,1,0,1);
+    controller(1,0,1,0);
+    //test_case_19
+    printf("TEST CASE 19\n");
+    controller(1,0,0,1);
+    controller(1,1,0,0);
+    //test_case_20
+    printf("TEST CASE 20\n");
+    controller(0,0,1,0);
+    controller(1,1,1,1);
+    //test_case_21
+    printf("TEST CASE 21\n");
+    controller(1,0,0,0);
+    controller(0,1,1,0);
+    //test_case_22
+    printf("TEST CASE 22\n");
+    controller(0,0,1,1);
+    controller(0,1,0,0);
+    //test_case_23
+    printf("TEST CASE 23\n");
+    controller(0,1,0,1);
+    controller(0,0,0,0);
+    //test_case_24
+    printf("TEST CASE 24\n");
+    controller(0,0,0,1);
+    controller(1,1,0,1);
+    //test_case_25
+    printf("TEST CASE 25\n");
+    controller(0,1,0,1);
+    controller(0,1,1,0);
+    //test_case_26
+    printf("TEST CASE 26\n");
+    controller(0,0,0,0);
+    controller(1,1,1,1);
+    //test_case_27
+    printf("TEST CASE 27\n");
+    controller(0,0,0,1);
+    controller(0,1,1,1);
+    //test_case_28
+    printf("TEST CASE 28\n");
+    controller(1,1,1,1);
+    controller(1,1,1,0);
+    //test_case_29
+    printf("TEST CASE 29\n");
+    controller(1,1,0,0);
+    controller(0,0,0,1);
+    //test_case_30
+    printf("TEST CASE 30\n");
+    controller(0,1,0,1);
+    controller(1,0,0,0);
+    controller(0,0,1,1);
 
     printf("\nPredefined test cases completed.\n");
 }
