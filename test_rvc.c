@@ -210,7 +210,7 @@ void test_controller_case_17() {
     controller(0, 0, 0, 1);  // Step 1
     controller(1, 0, 1, 1);  // Step 2 
     CU_ASSERT_TRUE(is_dust_detected());  // Check if dust was detected in first call
-    CU_ASSERT_TRUE(is_front_obstacle);  // Check if front obstacle was detected in step 2
+    CU_ASSERT_TRUE(is_front_obstacle());  // Check if front obstacle was detected in step 2
 }
 
 // Test case 18: Multiple calls in one test
@@ -218,8 +218,8 @@ void test_controller_case_18() {
     printf("TEST CASE 18\n");
     controller(0, 1, 0, 1);  // Step 1
     controller(1, 0, 1, 0);  // Step 2
-    CU_ASSERT_TRUE(is_left_obstacle());  // Check if left obstacle was detected in step 1
-    CU_ASSERT_FALSE(is_right_obstacle());  // Check if right obstacle is detected in step 2
+    CU_ASSERT_FALSE(is_left_obstacle());  // Check if left obstacle was detected in step 1
+    CU_ASSERT_TRUE(is_right_obstacle());  // Check if right obstacle is detected in step 2
 }
 
 // Test case 19: Multiple calls in one test
